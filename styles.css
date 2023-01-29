@@ -1,0 +1,245 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:root {
+  --calculator-w: max-content;
+  --control-order: 2;
+  --items-order: 1;
+  --control-flex-direction: column;
+  --items-flex-direction: row;
+  --item-flex-direction: column;
+  --item-height: 50vh;
+  --item-justify-content: flex-end;
+  --item-div-order: 3;
+  --item-before-order: 2;
+  --item-after-div-order: 1;
+  --item-content-flex: 0 0 70px;
+  --item-content-align-item: center;
+  --item-border-width: 3px 0 0 0;
+  --item-content-options-flex-direction: column;
+}
+
+@media screen and (max-height: 500px) {
+  :root {
+    --calculator-w: auto;
+    --control-order: 1;
+    --items-order: 2;
+    --control-flex-direction: row;
+    --items-flex-direction: column;
+    --item-flex-direction: row;
+    --item-height: 100%;
+    --item-justify-content: flex-start;
+    --item-div-order: 1;
+    --item-before-order: 2;
+    --item-after-order: 3;
+    --item-content-flex: 0 0 120px;
+    --item-content-align-item: flex-start;
+    --item-border-width: 0 3px 0 0;
+    --item-content-options-flex-direction: row;
+  }
+}
+main {
+  width: 100%;
+  height: 100%;
+}
+main .section__calculator {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: var(--calculator-w);
+  padding: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 50px;
+}
+main .section__calculator .section__calculator__range_items {
+  -webkit-box-ordinal-group: var(--control-order);
+      -ms-flex-order: var(--control-order);
+          order: var(--control-order);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: var(--control-flex-direction);
+          flex-direction: var(--control-flex-direction);
+}
+main .section__calculator .section__calculator__range_items .range_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 5px;
+}
+main .section__calculator .section__calculator__range_items .range_item > div input {
+  display: block;
+  width: 100%;
+}
+main .section__calculator .section__calculator__range_items .range_item > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+main .section__calculator .section__calculator__chart {
+  -webkit-box-ordinal-group: var(--items-order);
+      -ms-flex-order: var(--items-order);
+          order: var(--items-order);
+}
+main .section__calculator .section__calculator__chart .section__calculator__chart__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: var(--items-flex-direction);
+          flex-direction: var(--items-flex-direction);
+  width: 100%;
+}
+main .section__calculator .section__calculator__chart .section__calculator__chart__list li {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: var(--item-height);
+  min-height: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: var(--item-justify-content);
+      -ms-flex-pack: var(--item-justify-content);
+          justify-content: var(--item-justify-content);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: var(--item-flex-direction);
+          flex-direction: var(--item-flex-direction);
+  width: 100%;
+}
+main .section__calculator .section__calculator__chart .section__calculator__chart__list li > div {
+  position: relative;
+  border: solid black;
+  border-width: var(--item-border-width);
+  -webkit-box-ordinal-group: var(--item-div-order);
+      -ms-flex-order: var(--item-div-order);
+          order: var(--item-div-order);
+  -webkit-box-flex: var(--item-content-flex);
+      -ms-flex: var(--item-content-flex);
+          flex: var(--item-content-flex);
+  width: 100%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: var(--item-content-align-item);
+      -ms-flex-align: var(--item-content-align-item);
+          align-items: var(--item-content-align-item);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+main .section__calculator .section__calculator__chart .section__calculator__chart__list li > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: var(--item-content-options-flex-direction);
+          flex-direction: var(--item-content-options-flex-direction);
+  font-size: 12px;
+}
+main .section__calculator .section__calculator__chart .section__calculator__chart__list li::before {
+  -webkit-box-ordinal-group: var(--item-before-order);
+      -ms-flex-order: var(--item-before-order);
+          order: var(--item-before-order);
+  content: "";
+  width: 20px;
+  height: 20px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 var(--percentages-chart);
+          flex: 0 1 var(--percentages-chart);
+  display: block;
+  background-color: var(--data-chart-background);
+  right: 0;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: 50ms;
+          transition-duration: 50ms;
+}
+main .section__calculator .section__calculator__chart .section__calculator__chart__list li::after {
+  padding: 2px;
+  -webkit-box-ordinal-group: var(--item-after-order);
+      -ms-flex-order: var(--item-after-order);
+          order: var(--item-after-order);
+  content: attr(data-chart-value) " $";
+  font-weight: 700;
+  display: block;
+  color: black;
+}

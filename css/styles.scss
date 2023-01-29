@@ -1,0 +1,154 @@
+@import "./reset.scss";
+
+:root {
+    --calculator-w: max-content;
+
+    --control-order: 2;
+    --items-order: 1;
+
+    --control-flex-direction: column;
+    --items-flex-direction: row;
+    --item-flex-direction: column;
+    --item-height: 50vh;
+    --item-justify-content: flex-end;
+
+    --item-div-order: 3;
+    --item-before-order: 2;
+    --item-after-div-order: 1;
+
+    --item-content-flex: 0 0 70px;
+    --item-content-align-item: center;
+    --item-border-width: 3px 0 0 0;
+
+    --item-content-options-flex-direction: column;
+}
+
+@media screen and (max-height: 500px) {
+    :root {
+        --calculator-w: auto;
+
+        --control-order: 1;
+        --items-order: 2;
+
+        --control-flex-direction: row;
+        --items-flex-direction: column;
+        --item-flex-direction: row;
+        --item-height: 100%;
+        --item-justify-content: flex-start;
+
+        --item-div-order: 1;
+        --item-before-order: 2;
+        --item-after-order: 3;
+
+        --item-content-flex: 0 0 120px;
+        --item-content-align-item: flex-start;
+        --item-border-width: 0 3px 0 0;
+
+        --item-content-options-flex-direction: row;
+    }
+}
+
+
+main {
+    width: 100%;
+    height: 100%;
+
+    .section__calculator {
+        margin: auto;
+        display: flex;
+        width: var(--calculator-w);
+        padding: 20px;
+        flex-direction: column;
+        gap: 50px;
+
+        .section__calculator__range_items {
+            order: var(--control-order);
+            display: flex;
+            flex-direction: var(--control-flex-direction);
+
+            .range_item {
+                display: flex;
+                flex: 1 1 50%;
+                flex-direction: column;
+                padding: 0 5px;
+
+                &>div {
+                    input {
+                        display: block;
+                        width: 100%;
+                    }
+
+                    &>div {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+
+                }
+            }
+        }
+
+        .section__calculator__chart {
+            order: var(--items-order);
+
+            .section__calculator__chart__list {
+                display: flex;
+                flex-direction: var(--items-flex-direction);
+                width: 100%;
+
+                li {
+                    position: relative;
+                    display: flex;
+                    height: var(--item-height);
+                    min-height: 50px;
+                    align-items: center;
+                    justify-content: var(--item-justify-content);
+                    flex-direction: var(--item-flex-direction);
+                    width: 100%;
+
+                    &>div {
+                        position: relative;
+                        border: solid black;
+                        border-width: var(--item-border-width);
+                        order: var(--item-div-order);
+                        flex: var(--item-content-flex);
+                        width: 100%;
+                        height: 50px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: var(--item-content-align-item);
+                        justify-content: center;
+
+                        &>div {
+                            display: flex;
+                            flex-direction: var(--item-content-options-flex-direction);
+                            font-size: 12px;
+                        }
+                    }
+
+                    &::before {
+                        order: var(--item-before-order);
+                        content: "";
+                        width: 20px;
+                        height: 20px;
+                        flex: 0 1 var(--percentages-chart);
+                        display: block;
+                        background-color: var(--data-chart-background);
+                        right: 0;
+                        transition-property: all;
+                        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                        transition-duration: 50ms;
+                    }
+
+                    &::after {
+                        padding: 2px;
+                        order: var(--item-after-order);
+                        content: attr(data-chart-value) " $";
+                        font-weight: 700;
+                        display: block;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}
